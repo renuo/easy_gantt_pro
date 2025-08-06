@@ -17,6 +17,7 @@ Redmine::MenuManager.map :easy_gantt_tools do |menu|
   menu.push(:baseline, 'javascript:void(0)',
     param: :project_id,
     caption: :'easy_gantt.button.create_baseline',
+    icon: 'projects',
     html: { icon: 'icon-projects' },
     if: proc { |project|
       project.present? &&
@@ -29,6 +30,7 @@ Redmine::MenuManager.map :easy_gantt_tools do |menu|
   menu.push(:critical, 'javascript:void(0)',
     param: :project_id,
     caption: :'easy_gantt.button.critical_path',
+    icon: 'summary',
     html: { icon: 'icon-summary' },
     if: proc { |p| p.present? && Setting.plugin_easy_gantt['critical_path'] != 'disabled' },
     after: :tool_panel)
@@ -36,6 +38,7 @@ Redmine::MenuManager.map :easy_gantt_tools do |menu|
   menu.push(:add_task, 'javascript:void(0)',
     param: :project_id,
     caption: :label_new,
+    icon: 'add',
     html: { icon: 'icon-add' },
     if: proc { |project|
       project.present? &&
@@ -45,26 +48,22 @@ Redmine::MenuManager.map :easy_gantt_tools do |menu|
     },
     after: :tool_panel)
 
-  menu.push(:ggrm, 'javascript:void(0)',
-    caption: :'easy_gantt_pro.resources.label_resources',
-    html: { icon: 'icon-stats' },
-    if: proc { |project|
-      project.nil? && Redmine::Plugin.installed?(:easy_gantt_resources)
-    })
-
   menu.push(:delayed_project_filter, 'javascript:void(0)',
     caption: :'easy_gantt.button.delayed_project_filter',
-    html: { icon: 'icon-filter' },
+    icon: 'list',
+    html: { icon: 'icon-list' },
     if: proc {
       Setting.plugin_easy_gantt['show_project_progress'] == '1'
     })
 
   menu.push(:delayed_issue_filter, 'javascript:void(0)',
     caption: :'easy_gantt.button.delayed_issue_filter',
-    html: { icon: 'icon-filter' })
+    icon: 'list',
+    html: { icon: 'icon-list' })
 
   menu.push(:show_lowest_progress_tasks, 'javascript:void(0)',
     caption: :'easy_gantt.button.show_lowest_progress_tasks',
+    icon: 'warning',
     html: { icon: 'icon-warning' },
     if: proc { |project|
       project.nil? && Setting.plugin_easy_gantt['show_lowest_progress_tasks'] == '1'

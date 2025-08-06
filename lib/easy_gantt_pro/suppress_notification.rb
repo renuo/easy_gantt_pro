@@ -8,7 +8,7 @@ module EasyGanttPro
     module InstanceMethods
 
       def notify?
-        if RequestStore.store[:easy_gantt_suppress_notification] == true
+        if EasyGanttSuppressNotification.value == true
           false
         else
           super

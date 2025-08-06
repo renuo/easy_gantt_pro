@@ -14,7 +14,7 @@ module EasyGanttPro
       private
 
       def easy_gantt_suppress_notification
-        RequestStore.store[:easy_gantt_suppress_notification] = (params[:issue] && params[:issue][:easy_gantt_suppress_notification] == 'true')
+        EasyGanttSuppressNotification.value = (params[:issue] && params[:issue][:easy_gantt_suppress_notification] == 'true')
       end
 
     end

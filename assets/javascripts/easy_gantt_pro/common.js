@@ -14,7 +14,8 @@ $.extend(ysy.pro.common, {
       if (obj.type === "project") {
         var nonLoadedIssues = obj.widget && obj.widget.model.issues_count;
         var path = ysy.settings.paths.rootPath + "projects/";
-        return "<a class='gantt-grid-row-project' href='" + path + id + "' title='" + obj.text + "' target='_blank'>" + obj.text + "</a>"
+        var text = ysy.main.escapeText(obj.text);
+        return "<a class='gantt-grid-row-project' href='" + path + id + "' title='" + text + "' target='_blank'>" + text + "</a>"
             + (nonLoadedIssues ? "<a class='gantt-grid-project-issues-expand' href='javascript:void(0)' title='Load " + nonLoadedIssues + " issues' onclick='ysy.data.loader.openIssuesOfProject(" + id + ")'>" + nonLoadedIssues + "</a>" : "");
       }
     };
